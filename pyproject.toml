@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apple-health-data-parser"
+version = "1.0"
+description = "Parse Apple Health XML exports into health tracking DataFrames."
+requires-python = ">=3.10"
+dependencies = [
+  "click>=8.1.7",
+  "pandas>=2.0.0",
+]
+
+[project.scripts]
+apple-health-data-parser = "apple_health_data_parser.__main__:main"
+
+[tool.setuptools]
+packages = ["apple_health_data_parser"]
