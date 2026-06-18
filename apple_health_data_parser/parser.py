@@ -36,6 +36,7 @@ class HealthDataParser:
         workout_mask = df["type"] == "workout"
         df.loc[sleep_mask,   "value"] = df.loc[sleep_mask,   "value"].str.replace("HKCategoryValueSleepAnalysis", "").str.lower()
         df.loc[workout_mask, "value"] = df.loc[workout_mask, "value"].str.replace("HKWorkoutActivityType",        "").str.lower()
+        df = df.drop_duplicates(subset=["type", "startDate", "endDate", "value"])
         df = df.sort_values("startDate").reset_index(drop=True)
         return df
 
